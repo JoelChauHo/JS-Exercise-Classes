@@ -143,7 +143,7 @@ class Lambdasian {
 class Instructor extends Lambdasian{
   constructor(options) {
     const superOpts = Object.create(options); // safer
-    options.type = 'rook';
+    //options.type = 'rook';
     super(superOpts);
     this.specialty = options.specialty;
     this.favLanguage = options.favLanguage;
@@ -175,10 +175,27 @@ class Instructor extends Lambdasian{
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student  extends Lambdasian{
+  constructor(options) {
+    const superOpts = Object.create(options); // safer
+    
+    super(superOpts);
+    this.previousBackground = options.previousBackground;
+    this.className = options.className;
+    this.favSubjects = options.favSubjects; //array of the student's favorite subjects ['HTML', 'CSS', 'JS']
+  }
+  listSubjects(){
+    return `Loving ${this.favSubjects.toString()}` //HTML, CSS, JS!`
+  }
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`;
 
+  }
+  sprintChallenge(subject){
+    return `${this.name} has begun sprint challenge on ${subject}`
+
+  }
 }
-
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
